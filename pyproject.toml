@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "rgt-digital-twin"
+version = "0.1.0"
+description = ""
+authors = ["Jacqueline Lammert <jacqueline.lammert@tum.de>",
+            "Max Tschochohei <maxtsc@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pytesseract = "^0.3.10"
+pdf2image = "^1.17.0"
+python-docx = "^1.1.2"
+local-gemma = "^0.2.0"
+pypdf2 = "^3.0.1"
+pandas = "^2.2.2"
+quanto = "^0.2.0"
+vertexai = "^1.63.0"
+google-cloud-aiplatform = "^1.63.0"
+google-auth = "^2.34.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
