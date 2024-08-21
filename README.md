@@ -4,7 +4,7 @@ The RGT Digital Twin is an innovative application designed to address the challe
 The application aims to leverage the power of large language models (LLMs) to overcome these challenges. By integrating data from diverse sources, including electronic health records (EHRs) and extensive literature, the RGT Digital Twin can construct personalized digital twins for patients with RGTs. These digital twins model individual patient trajectories, enabling clinicians to identify suitable treatment options, including off-label therapies and clinical trials. The ultimate goal is to advance the management of rare cancers and optimize patient care, particularly in resource-limited settings like Molecular Tumor Boards (MTBs).
 
 # Technical Design
-##Data Collection
+## Data Collection
 * The application collects data from institutional EHRs. It accepts any format as it is .pdf, .docx, .jpg or .png. We suggest to put this into a folder `ehr` in the application directory.
 * The application also processes literature data, which it accepts in .pdf format. We suggest to put this into a folder `literature` in the application directory.
 
