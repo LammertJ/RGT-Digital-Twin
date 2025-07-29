@@ -28,18 +28,14 @@ The application aims to leverage the power of large language models (LLMs) to ov
 
 # How-to
 ## Prerequisites
-### Dependent system packages
-To execute RGT Digital Twin, you will need the following packages installed on your local machine to process unstructured text files:
-* tesseract-ocr 
-* libtesseract-dev 
-* tesseract-ocr-deu 
-* poppler-utils
-
 ### Poetry
 Install [Poetry](https://python-poetry.org/docs/) on your local machine for a convenient way to download and manage python packages. 
 
-### Google Cloud resources
-You need a Google Cloud project with the Vertex AI API enabled and a `credentials.json` for a service account in your Google Cloud project with Vertex AI user permissions. See the [documentation]((https://cloud.google.com/iam/docs/keys-create-delete)) if you have questions.
+### Local LLM (needed for EHR extraction)
+You will need to install a suitable LLM on your local machine for EHR extraction. We recommend `gemma3:27b-it-qat` with Ollama. Follow the [official instructions](https://ollama.com/library/gemma3:27b) and install Gemma with Ollama. You will be able to access it using the LangChain library.
+
+### Google Cloud resources (needed for literature exraction)
+Please install the [Google Cloud CLI](https://cloud.google.com/sdk/docs/install). You need a Google Cloud project with the Vertex AI API enabled. Please create a copy of the `.env_copy` file with your project information and rename it to `.env`. You will then need to authenticate with your Google Cloud environment using the `gcloud auth application-default login` command. 
 
 And that's it, you're good to go!
 
@@ -54,20 +50,17 @@ Run `poetry install` from the package directory.
 > Make sure that you separate EHR and Literature Files! Literature is processed using a cloud-based LLM.
 
 ### EHR Extraction
-* First, you execute EHR extraction by extracting text data from EHR and then processing it with your local LLM. We use Py2PDF, Tesseract and python-docx for this, depending on the document type.
+* First, you execute EHR extraction by extracting text data from EHR and then processing it with your local LLM.
 > [!CAUTION]
 > If you do not have a powerful machine, this will take a *long* time. Make sure you have enough disk space, RAM, and ideally a GPU or two. You can reduce the model size in `config.py`, but this will reduce quality.
-* You execute the script with the folder as an argument, e.g., `python rgt-digital-twin/ehr_extraction.py ehr` if your EHR are in folder `ehr` in the package root directory.
-* The script will produce a .csv file in the root directory with the extracted information
-* All documents that could not be processed (e.g., because the LLM messed up the dictionary format) will be logged in `ehr_extraction.log` so you can add them manually later.
+* You execute the script with the folder as an argument, e.g., `poetry run python rgt_digital_twin/ehr_extraction.py --directory ehr --entities rgt_digital_twin/ehr_entities.json --output ehr_extraction_results.json` if your EHR are in folder `ehr` in the package root directory.
+* The script will produce a .json file in the root directory with the extracted information
+* All documents that could not be processed will be logged in `ehr_extraction.log` so you can add them manually later.
 
 ### Literature Extraction
 * Next, we process literature data. All .pdf are processed in-context within the LLM, so we do not need to perform any text/image extraction
-* You execute the script with the folder and disease information as an argument, e.g., `python rgt-digital-twin/literature_extraction.py literature "disease: uterine carcinosarcoma; biomarker: PD-L1 high, TMB medium, HER2 high"` if your studies are in folder `literature` in the package root directory and you want to discover treatment options for UCS with high PD-L1 and HER2 Status.
+* You execute the script with the folder and disease information as an argument, e.g., `poetry run python rgt_digital_twin/literature_extraction.py --directory literature --entities rgt_digital_twin/literature_entities.json --output literature_extraction_results.json` if your studies are in folder `literature` in the package root directory.
 > [!CAUTION]
 > Do not put confidential patient data or patient personally identifiable information (PII) into the script! The data will be processed by a cloud-based LLM.
-* The script will produce a .csv file in the root directory with the extracted information
-* All documents that could not be processed (e.g., because the LLM messed up the dictionary format) will be logged in `literature_extraction.log` so you can add them manually later.
-
-
-
+* The script will produce a .json file in the root directory with the extracted information
+* All documents that could not be processed will be logged in `literature_extraction.log` so you can add them manually later.

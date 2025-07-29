@@ -1,0 +1,21 @@
+{
+  "study_type": "Identify the study design. Return 'Case Report' for single patient studies, or 'Clinical Study' for studies with multiple participants or arms. Example: 'This case report...', 'In this clinical study...'",
+  "number_of_participants": "Extract the total number of participants in the study or a specific arm. Look for 'n=' or phrases like 'a total of X patients'. Return only the numerical value. Example: 'n=38' should return 38.",
+  "race_distribution": "Extract the racial demographics of the patient population, including percentages if available. Return as a string. Example: 'Caucasian (80%), Asian (15%), Other (5%)'. If this information is not found, return 'N/A'.",
+  "gender_distribution": "Extract the gender demographics of the patient population, including percentages if available. Return as a string. Example: 'Female (60%), Male (40%)'. If this information is not found, return 'N/A'.",
+  "age": "Extract the patient age information. Capture the mean, median, and/or range. Return as a string. Example: 'mean 55 years (range 44-60)'. If this information is not found, return 'N/A'.",
+  "diagnosis": "Extract the primary disease or condition of the patients. Example: 'Iron deficiency', 'Metastatic non-small cell lung cancer'. If not found, return 'N/A'.",
+  "disease_stage": "Extract the stage of the disease, if specified. Look for 'Stage' followed by Roman or Arabic numerals. Example: 'Stage IV'. If not found or not applicable, return 'N/A'.",
+  "metastatic_setting": "Determine if the disease is described as metastatic. Return 'Yes' if terms like 'metastatic' or 'advanced' are used, otherwise return 'No'. If this is unclear, return 'N/A'.",
+  "previous_treatments": "List all treatments the patients received before the study's main intervention. Example: 'Prior chemotherapy and radiation', 'Tomato soup'. If none are mentioned, return 'N/A'.",
+  "treatment_line": "Identify the line of therapy at the time of study entry. Look for terms like 'first-line', 'second-line', '3L+'. Example: 'Second-line'. If not mentioned, return 'N/A'.",
+  "response_to_prior_treatments": "Describe the outcome of previous treatments. Look for terms like 'relapsed', 'refractory', or 'progressive disease on prior therapy'. If not mentioned, return 'N/A'.",
+  "biomarker_profile": "Extract all mentioned biomarkers and their values. Format the result as a list of objects, where each object has one key (the biomarker name) and one value (the result). Example: [{'PD-L1': 'CPS: 41, TPS: 3%'}, {'TMB': 'High'}]. If no biomarkers are mentioned, return an empty list [].",
+  "treatment_administered": "Identify the main treatment or intervention administered in the study or a specific study arm. Example: 'Candy corn', 'Pembrolizumab'. If not found, return 'N/A'.",
+  "treatment_response": "Extract the best overall response to the treatment. Use standard abbreviations: 'CR' (Complete Response), 'PR' (Partial Response), 'SD' (Stable Disease), 'PD' (Progressive Disease). Example: 'PR'. If not found, return 'N/A'.",
+  "adverse_effects": "List any significant adverse effects or toxicities reported in relation to the treatment. Example: 'Grade 3 fatigue, nausea'. If none are mentioned, return 'None'.",
+  "median_pfs_months": "Find the median Progression-Free Survival (PFS) and return the value in months. Look for 'median PFS of X months'. Return only the numerical value. Example: from '7.2 months', return 7.2. If not found, return 'N/A'.",
+  "median_os_months": "Find the median Overall Survival (OS) and return the value in months. Look for 'median OS of X months'. Return only the numerical value. Example: from '12 months', return 12. If not found, return 'N/A'.",
+  "number_of_study_arms": "For clinical studies, count the number of distinct treatment arms or groups. Example: 'Patients were randomized into three arms...'. Return the numerical value, e.g., 3. For case reports, return 1.",
+  "study_arms": "For clinical studies with multiple arms, extract the data for each arm separately. Structure the output as a nested JSON object where each key is the arm name (e.g., 'Study Arm 1', 'Study Arm 2') and the value contains all the extracted details (n, treatment, PFS, etc.) for that specific arm."
+}

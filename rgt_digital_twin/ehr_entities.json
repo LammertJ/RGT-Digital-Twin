@@ -1,0 +1,9 @@
+{
+  "geburtsdatum": "Extrahiere das Geburtsdatum. Beispiele: \"01.06.1988\", \"01. Juni 1988\". Gib deine Antwort AUSSCHLIESSLICH im Format: June 01, 1988",
+  "diagnose": "Extrahiere die Diagnose aus dem Arztbericht. Beispiele: \"Diagnose: Adenokarzinom der Lunge\", \"Klinische Angabe: CUP/PECA\". Gib deine Antwort AUSSCHLIESSLICH im Format: Adenokarzinom",
+  "prozent_instabile_mikrosatellitenstellen": "Extrahiere den Wert für die Prozent instabiler Mikrosatellitenstellen. Beispiele: \"Prozent instabiler Mikrosatellitenstellen: 1,63\". Gib deine Antwort AUSSCHLIESSLICH im Format: 1,63",
+  "tmb": "Extrahiere die Tumorlast TMB (Mut/mb). Beispiele: \"TMB (Mut/Mb): 22,1\", \"3.2 Mut/Mb\". Gib deine Antwort AUSSCHLIESSLICH im Format: 10.2",
+  "pd-l1_tps": "Extrahiere den PD-L1 Tumor-Proportion-Score. Beispiele: \"PD-L1 TPS: 80\", \"PDL1 Tumor-Proportion-Score = 40\". Gib deine Antwort AUSSCHLIESSLICH im Format: 50",
+  "ic": "Extrahiere den Wert für das Immunzelleninfiltrat (IC). Beispiele: \"Immunzellinfiltrat (IC): 10% der Tumorfläche\", \"Immunzellinfiltrat (IC): <1% der Tumorfläche\". Gib deine Antwort AUSSCHLIESSLICH im Format: 10%",
+  "pd-l1_cps": "Extrahiere den PD-L1 Combined Positive Score. Beispiele: \"PD-L1: 80\", \"PDL1 CPS = 40\", \"PD-L1 Combined-Positive-Score (CPS): 70\". Gib deine Antwort AUSSCHLIESSLICH im Format: 50"
+}

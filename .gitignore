@@ -1,2 +1,23 @@
+# Poetry
 poetry.lock
+
+# Logs
 *.log
+
+# Environment
+.env
+
+# IDE/Editor
+.vscode/
+.idea/
+.project/
+
+# Python
+__pycache__/
+*.pyc
+
+# Testing
+.pytest_cache/
+
+# macOS
+.DS_Store
