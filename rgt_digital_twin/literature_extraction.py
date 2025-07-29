@@ -1,5 +1,5 @@
 #
-# Copyright [Aug 20, 2024] [Jacqueline Lammert, Maximilian Tschochohei]
+# Copyright [Jul 29, 2025] [Jacqueline Lammert, Maximilian Tschochohei]
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 # This class holds an agent to extract data from scientific literature using
-# the Google Gemini 1.5 Pro LLM
+# the Google Gemini 2.5 Flash LLM
 #
 
 import argparse
